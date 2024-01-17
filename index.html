@@ -275,6 +275,27 @@ body{
     
   </style>
    <script>
+function myFunction1() {
+  document.documentElement.style.setProperty('--main_background', 'hsl(222, 26%, 31%)');
+  document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(223, 31%, 20%)');
+  document.documentElement.style.setProperty('--screen_background','hsl(224, 36%, 15%)');
+  document.documentElement.style.setProperty('--key_background','hsl(30, 25%, 89%)');
+  document.documentElement.style.setProperty('--box_shadow1',' 0 4px 0 0 hsl(28, 16%, 65%)');
+  document.documentElement.style.setProperty('--del-reset_background','hsl(225, 21%, 49%)');
+  document.documentElement.style.setProperty('--del-reset_shadow','0 4px 0 0  hsl(224, 28%, 35%)');
+  document.documentElement.style.setProperty('--equal_background',' hsl(6, 63%, 50%)');
+  document.documentElement.style.setProperty('--equal_shadow','0 4px 0 0 hsl(6, 70%, 34%)')
+  document.documentElement.style.setProperty('--key_color','hsl(221, 14%, 31%)' );
+  document.documentElement.style.setProperty('--body_color','  hsl(0, 0%, 100%)' );
+  document.documentElement.style.setProperty('--del_reset_active','hsl(226, 32%, 69%)');
+  document.documentElement.style.setProperty('--equal_active','hsl(6, 74%, 64%)')
+  document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)');
+  document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
+  document.getElementById("toggle_2").style.opacity="0";
+  document.getElementById("toggle_1").style.opacity="0.9";
+  document.getElementById("toggle_3").style.opacity="0";
+}
+
 function myFunction2() {
   document.documentElement.style.setProperty('--main_background', 'hsl(0, 0%, 90%)');
   document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(0, 5%, 81%)');
@@ -326,7 +347,7 @@ function myFunction3() {
       <div class="theme_toggle"> <span style="font-size: 11px;font-weight: 700;">THEME</span>
       <div class="toggle_container">
         <div class="text"><span style="font-size: 12px;">1&emsp;&nbsp;2&emsp;&nbsp;3</span></div>
-       <div class="toggle_background"><a href=""><div id="toggle_1" class="toggle_btn"></div></a><div id="toggle_2" onclick="myFunction2()" class="toggle_btn2"></div><div id="toggle_3" onclick="myFunction3()" class="toggle_btn3"></div></div>
+       <div class="toggle_background"><div id="toggle_1" onclick="myFunction1()" class="toggle_btn"></div><div id="toggle_2" onclick="myFunction2()" class="toggle_btn2"></div><div id="toggle_3" onclick="myFunction3()" class="toggle_btn3"></div></div>
       </div> 
       </div>
     </div>
