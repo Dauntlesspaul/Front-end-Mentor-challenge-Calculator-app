@@ -275,6 +275,122 @@ body{
     
   </style>
    <script>
+let screenDigit =[]
+let display;
+let firstInput=0;
+let secondInput=0;
+
+function input(value){
+let userInput = value.innerText;
+if(screenDigit.length<16){
+screenDigit.push(userInput)
+let sign = document.getElementById('result').innerText;
+if(screenDigit[0]=='.'){
+  if(sign!=='MULTIPLICATION' && sign!=='ADDITION' && sign!=='SUBTRACTION'){
+  screenDigit.shift();
+  }
+}
+const noDots = screenDigit.filter((dot)=>dot=='.').length;
+
+if(noDots>1){
+ const excessDot = screenDigit.lastIndexOf('.')
+ screenDigit.splice(excessDot,1)
+}
+
+display= screenDigit.join('')
+document.getElementById('output').innerText=display;
+}
+}
+
+function reset(){
+  display='';
+  document.getElementById('output').innerText=display;
+  document.getElementById('result').innerText='';
+  screenDigit=[]
+}
+function del(){
+  screenDigit.pop();
+  display=screenDigit.join('');
+  document.getElementById('output').innerText=display;
+  if(screenDigit.length==0){ 
+  document.getElementById('result').innerText='';
+  }
+}
+
+function operation(value){
+  if(screenDigit.length>0){
+  const userInput = value.id;
+  document.getElementById('result').innerText=userInput;
+  firstInput=Number(display);
+  screenDigit=[]
+  display=''
+  document.getElementById('output').innerText=display;
+  }
+}
+
+
+
+function equal(){
+  secondInput=display;
+  if(!firstInput==0 && !secondInput==0){
+  const operator =document.getElementById('result').innerText
+  switch(operator){
+  case 'ADDITION':
+   const plusResult = Number(firstInput) + Number(secondInput);
+   document.getElementById('output').innerText=plusResult
+   document.getElementById('result').innerText='ANSWER';
+   firstInput=0;
+   secondInput=0;
+   screenDigit=[];
+    break;
+    case 'SUBTRACTION':
+   const minusResult = Number(firstInput) - Number(secondInput);
+   document.getElementById('output').innerText=minusResult;
+   document.getElementById('result').innerText='ANSWER';
+   firstInput=0;
+   secondInput=0;
+   screenDigit=[];
+    break;
+    case 'MULTIPLICATION':
+   const mulResult = Number(firstInput) * Number(secondInput);
+   document.getElementById('output').innerText=mulResult;
+   document.getElementById('result').innerText='ANSWER';
+   firstInput=0;
+   secondInput=0;
+   screenDigit=[];
+    break;
+    default:
+    const divResult =(Number(firstInput) / Number(secondInput)).toFixed(2)
+   document.getElementById('output').innerText=divResult;
+   document.getElementById('result').innerText='ANSWER';
+   firstInput=0;
+   secondInput=0;
+   screenDigit=[];
+  }
+}
+}
+
+function myFunction1() {
+  document.documentElement.style.setProperty('--main_background', 'hsl(222, 26%, 31%)');
+  document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(223, 31%, 20%)');
+  document.documentElement.style.setProperty('--screen_background','hsl(224, 36%, 15%)');
+  document.documentElement.style.setProperty('--key_background','hsl(30, 25%, 89%)');
+  document.documentElement.style.setProperty('--box_shadow1',' 0 4px 0 0 hsl(28, 16%, 65%)');
+  document.documentElement.style.setProperty('--del-reset_background','hsl(225, 21%, 49%)');
+  document.documentElement.style.setProperty('--del-reset_shadow','0 4px 0 0  hsl(224, 28%, 35%)');
+  document.documentElement.style.setProperty('--equal_background',' hsl(6, 63%, 50%)');
+  document.documentElement.style.setProperty('--equal_shadow','0 4px 0 0 hsl(6, 70%, 34%)')
+  document.documentElement.style.setProperty('--key_color','hsl(221, 14%, 31%)' );
+  document.documentElement.style.setProperty('--body_color','  hsl(0, 0%, 100%)' );
+  document.documentElement.style.setProperty('--del_reset_active','hsl(226, 32%, 69%)');
+  document.documentElement.style.setProperty('--equal_active','hsl(6, 74%, 64%)')
+  document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)');
+  document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
+  document.getElementById("toggle_2").style.opacity="0";
+  document.getElementById("toggle_1").style.opacity="0.9";
+  document.getElementById("toggle_3").style.opacity="0";
+}
+
 function myFunction2() {
   document.documentElement.style.setProperty('--main_background', 'hsl(0, 0%, 90%)');
   document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(0, 5%, 81%)');
@@ -326,30 +442,30 @@ function myFunction3() {
       <div class="theme_toggle"> <span style="font-size: 11px;font-weight: 700;">THEME</span>
       <div class="toggle_container">
         <div class="text"><span style="font-size: 12px;">1&emsp;&nbsp;2&emsp;&nbsp;3</span></div>
-       <div class="toggle_background"><a href=""><div id="toggle_1" class="toggle_btn"></div></a><div id="toggle_2" onclick="myFunction2()" class="toggle_btn2"></div><div id="toggle_3" onclick="myFunction3()" class="toggle_btn3"></div></div>
+       <div class="toggle_background"><div id="toggle_1" onclick="myFunction1()" class="toggle_btn"></div><div id="toggle_2" onclick="myFunction2()" class="toggle_btn2"></div><div id="toggle_3" onclick="myFunction3()" class="toggle_btn3"></div></div>
       </div> 
       </div>
     </div>
-    <div class="screen"><span class="paul" style="margin: 0 25px;">399,981</span></div>
+    <div class="screen"><div style="text-align: end;margin: 0 25px; line-height: 35px;"><span style="display: block;font-size: 20px;" id="result"></span><span style="display: block;" class="paul" id="output">399,981</span></div></div>
     <div class="grid_container">
-      <div class="seven box">7</div>
-      <div class="eight box">8</div>
-      <div class="nine box">9</div>
-      <div class="delete box">DEL</div>
-      <div class="four box">4</div>
-      <div class="five box">5</div>
-      <div class="six box">6</div>
-      <div class="plus box">+</div>
-      <div class="one box">1</div>
-      <div class="two box">2</div>
-      <div class="three box">3</div>
-      <div class="minus box">-</div>
-      <div class="dot box">.</div>
-      <div class="zero box">0</div>
-      <div class="slash box">/</div>
-      <div class="asteric box">x</div>
-      <div class="reset box2">RESET</div>
-      <div class="equal box2">=</div>
+      <div class="seven box" onclick="input(this)" >7</div>
+      <div class="eight box" onclick="input(this)">8</div>
+      <div class="nine box" onclick="input(this)">9</div>
+      <div class="delete box" onclick="del()">DEL</div>
+      <div class="four box" onclick="input(this)">4</div>
+      <div class="five box" onclick="input(this)">5</div>
+      <div class="six box"  onclick="input(this)">6</div>
+      <div class="plus box" id="ADDITION" onclick="operation(this)" >+</div>
+      <div class="one box"onclick="input(this)">1</div>
+      <div class="two box" onclick="input(this)">2</div>
+      <div class="three box" onclick="input(this)">3</div>
+      <div class="minus box" id="SUBTRACTION" onclick="operation(this)">-</div>
+      <div class="dot box" onclick="input(this)">.</div>
+      <div class="zero box" onclick="input(this)">0</div>
+      <div class="slash box"id="DIVISION" onclick="operation(this)">/</div>
+      <div class="asteric box" id="MULTIPLICATION" onclick="operation(this)">x</div>
+      <div class="reset box2" onclick="reset()">RESET</div>
+      <div class="equal box2"onclick="equal()">=</div>
     </div>
     </div>
   </div>
