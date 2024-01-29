@@ -54,17 +54,23 @@ body{
       justify-content: space-between;
       padding: 0 0 0 5px ;
     }
+    .toggle_background input[type=radio]{
+    display: none;
+    }
     .toggle_btn{
       width:15px;
       height: 15px;
       border-radius: 50%;
-      background-color: hsl(6, 63%, 50%);
       cursor: pointer;
     }
-    .toggle_btn:active{
+    #firstbtn{
+      background-color: hsl(6, 63%, 50%);
+    }
+    #firstbtn:active{
       background-color:hsl(6, 74%, 64%);
     }
-    .toggle_btn2{
+
+    #secondbtn{
       width:15px;
       height: 15px;
       border-radius: 50%;
@@ -72,10 +78,10 @@ body{
       opacity: 0;
       cursor: pointer;
     }
-    .toggle_btn2:active{
+    #secondbtn:active{
       background-color:hsl(25, 68%, 65%);
     }
-    .toggle_btn3{
+    #thirdbtn{
       width:15px;
       height: 15px;
       border-radius: 50%;
@@ -83,7 +89,7 @@ body{
       cursor: pointer;
       opacity: 0;
     }
-    .toggle_btn3:active{
+    #thirdbtn:active{
       background-color:hsl(176, 48%, 71%);
     }
     .toggle_container{
@@ -275,27 +281,6 @@ body{
     
   </style>
    <script>
-function myFunction1() {
-  document.documentElement.style.setProperty('--main_background', 'hsl(222, 26%, 31%)');
-  document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(223, 31%, 20%)');
-  document.documentElement.style.setProperty('--screen_background','hsl(224, 36%, 15%)');
-  document.documentElement.style.setProperty('--key_background','hsl(30, 25%, 89%)');
-  document.documentElement.style.setProperty('--box_shadow1',' 0 4px 0 0 hsl(28, 16%, 65%)');
-  document.documentElement.style.setProperty('--del-reset_background','hsl(225, 21%, 49%)');
-  document.documentElement.style.setProperty('--del-reset_shadow','0 4px 0 0  hsl(224, 28%, 35%)');
-  document.documentElement.style.setProperty('--equal_background',' hsl(6, 63%, 50%)');
-  document.documentElement.style.setProperty('--equal_shadow','0 4px 0 0 hsl(6, 70%, 34%)')
-  document.documentElement.style.setProperty('--key_color','hsl(221, 14%, 31%)' );
-  document.documentElement.style.setProperty('--body_color','  hsl(0, 0%, 100%)' );
-  document.documentElement.style.setProperty('--del_reset_active','hsl(226, 32%, 69%)');
-  document.documentElement.style.setProperty('--equal_active','hsl(6, 74%, 64%)')
-  document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)');
-  document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
-  document.getElementById("toggle_2").style.opacity="0";
-  document.getElementById("toggle_1").style.opacity="0.9";
-  document.getElementById("toggle_3").style.opacity="0";
-}
-
 let screenDigit =[]
 let display;
 let firstInput=0;
@@ -391,28 +376,10 @@ function equal(){
 }
 }
 
-function myFunction1() {
-  document.documentElement.style.setProperty('--main_background', 'hsl(222, 26%, 31%)');
-  document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(223, 31%, 20%)');
-  document.documentElement.style.setProperty('--screen_background','hsl(224, 36%, 15%)');
-  document.documentElement.style.setProperty('--key_background','hsl(30, 25%, 89%)');
-  document.documentElement.style.setProperty('--box_shadow1',' 0 4px 0 0 hsl(28, 16%, 65%)');
-  document.documentElement.style.setProperty('--del-reset_background','hsl(225, 21%, 49%)');
-  document.documentElement.style.setProperty('--del-reset_shadow','0 4px 0 0  hsl(224, 28%, 35%)');
-  document.documentElement.style.setProperty('--equal_background',' hsl(6, 63%, 50%)');
-  document.documentElement.style.setProperty('--equal_shadow','0 4px 0 0 hsl(6, 70%, 34%)')
-  document.documentElement.style.setProperty('--key_color','hsl(221, 14%, 31%)' );
-  document.documentElement.style.setProperty('--body_color','  hsl(0, 0%, 100%)' );
-  document.documentElement.style.setProperty('--del_reset_active','hsl(226, 32%, 69%)');
-  document.documentElement.style.setProperty('--equal_active','hsl(6, 74%, 64%)')
-  document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)');
-  document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
-  document.getElementById("toggle_2").style.opacity="0";
-  document.getElementById("toggle_1").style.opacity="0.9";
-  document.getElementById("toggle_3").style.opacity="0";
-}
-
-function myFunction2() {
+function  themeChange(e){
+  const switchbotton = e.id;
+  switch(switchbotton){
+    case "secondbtn":
   document.documentElement.style.setProperty('--main_background', 'hsl(0, 0%, 90%)');
   document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(0, 5%, 81%)');
   document.documentElement.style.setProperty('--screen_background','hsl(0, 0%, 93%)');
@@ -428,12 +395,11 @@ function myFunction2() {
   document.documentElement.style.setProperty('--equal_active','hsl(25, 74%, 63%)');
   document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)')
   document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
-  document.getElementById("toggle_2").style.opacity="0.9";
-  document.getElementById("toggle_1").style.opacity="0";
-  document.getElementById("toggle_3").style.opacity="0";
-}
-
-function myFunction3() {
+  document.getElementById("secondbtn").style.opacity="0.9";
+  document.getElementById("firstbtn").style.opacity="0";
+  document.getElementById("thirdbtn").style.opacity="0";
+  break;
+  case "thirdbtn":
   document.documentElement.style.setProperty('--main_background', 'hsl(268, 75%, 9%)');
   document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(268, 71%, 12%)');
   document.documentElement.style.setProperty('--screen_background','hsl(268, 71%, 12%');
@@ -449,10 +415,32 @@ function myFunction3() {
   document.documentElement.style.setProperty('--equal_active','hsl(177, 65%, 69%)')
   document.documentElement.style.setProperty('--equal_color','hsl(198, 20%, 13%)');
   document.documentElement.style.setProperty('--key_background_active','hsl(268, 45%, 51%)');
-  document.getElementById("toggle_2").style.opacity="0";
-  document.getElementById("toggle_1").style.opacity="0";
-  document.getElementById("toggle_3").style.opacity="0.9";
+  document.getElementById("secondbtn").style.opacity="0";
+  document.getElementById("firstbtn").style.opacity="0";
+  document.getElementById("thirdbtn").style.opacity="0.9";
+  break;
+  default:
+  document.documentElement.style.setProperty('--main_background', 'hsl(222, 26%, 31%)');
+  document.documentElement.style.setProperty('--toggle-keypad_background', 'hsl(223, 31%, 20%)');
+  document.documentElement.style.setProperty('--screen_background','hsl(224, 36%, 15%)');
+  document.documentElement.style.setProperty('--key_background','hsl(30, 25%, 89%)');
+  document.documentElement.style.setProperty('--box_shadow1',' 0 4px 0 0 hsl(28, 16%, 65%)');
+  document.documentElement.style.setProperty('--del-reset_background','hsl(225, 21%, 49%)');
+  document.documentElement.style.setProperty('--del-reset_shadow','0 4px 0 0  hsl(224, 28%, 35%)');
+  document.documentElement.style.setProperty('--equal_background',' hsl(6, 63%, 50%)');
+  document.documentElement.style.setProperty('--equal_shadow','0 4px 0 0 hsl(6, 70%, 34%)')
+  document.documentElement.style.setProperty('--key_color','hsl(221, 14%, 31%)' );
+  document.documentElement.style.setProperty('--body_color','  hsl(0, 0%, 100%)' );
+  document.documentElement.style.setProperty('--del_reset_active','hsl(226, 32%, 69%)');
+  document.documentElement.style.setProperty('--equal_active','hsl(6, 74%, 64%)')
+  document.documentElement.style.setProperty('--equal_color','hsl(0, 0%, 100%)');
+  document.documentElement.style.setProperty('--key_background_active','hsl(0, 0%, 100%)');
+  document.getElementById("secondbtn").style.opacity="0";
+  document.getElementById("firstbtn").style.opacity="0.9";
+  document.getElementById("thirdbtn").style.opacity="0";
+  }
 }
+
 </script>
 </head>
 <body>
@@ -463,7 +451,11 @@ function myFunction3() {
       <div class="theme_toggle"> <span style="font-size: 11px;font-weight: 700;">THEME</span>
       <div class="toggle_container">
         <div class="text"><span style="font-size: 12px;">1&emsp;&nbsp;2&emsp;&nbsp;3</span></div>
-       <div class="toggle_background"><div id="toggle_1" onclick="myFunction1()" class="toggle_btn"></div><div id="toggle_2" onclick="myFunction2()" class="toggle_btn2"></div><div id="toggle_3" onclick="myFunction3()" class="toggle_btn3"></div></div>
+       <div class="toggle_background">
+        <label id="firstbtn" onclick="themeChange(this)" class="toggle_btn" for="r1"><input type='radio' id="r1" name='toggle' checked> </label>
+        <label id="secondbtn" onclick="themeChange(this)" class="toggle_btn" for="r2"><input type='radio' id="r2" name='toggle'> </label>
+        <label id="thirdbtn" onclick="themeChange(this)" class="toggle_btn" for="r3"><input type='radio' id="r3" name='toggle'> </label>
+      </div>
       </div> 
       </div>
     </div>
